@@ -7,7 +7,21 @@ aws_access_key=AKIAXXXXXXXXXXXXXX
 aws_secret_key=8H6gXXXXXXXXXXXXXXXXXXXX
 
 # Get current public IP
-newip=$(curl curl http://checkip.amazonaws.com/ip)
+newip=$(curl http://checkip.amazonaws.com/ip)
+
+#sanity chack to make sure the IP is good from the checkip url
+if expr "$ip" : '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*$' >/dev/null; then
+  for i in 1 2 3 4; do
+    if [ $(echo "$ip" | cut -d. -f$i) -gt 255 ]; then
+      echo "fail not a valid ($ip)"
+      exit 1
+    fi
+  done
+  echo "success this looks like your IP  ($ip)"
+else
+  echo "fail not a valid ip  ($ip)"
+  exit 1
+fi
 
 # Get current Route 53 IP
 oldip=$(dig +short "$hostname" @ns-447.awsdns-55.com)
