@@ -52,3 +52,15 @@ first make this executable
         
         */5 * * * * /home/user/updateroute53.sh > /dev/null 2>&1
 
+## Costing 
+Doamin price $9 -$13 for the Registration per year
+Route53 Hosted Zone costs
+$0.50 per hosted zone / month for the first 25 hosted zones
+$0.10 per hosted zone / month for additional hosted zones
+### Queries
+The following query prices are prorated; for example, a hosted zone with 100,000 standard queries / month would be charged $0.04 and a hosted zone with 100,000 Latency-Based Routing queries / month would be charged $0.06.
+
+### Standard Queries
+$0.40 per million queries – first 1 Billion queries / month
+
+$0.20 per million queries – over 1 Billion queries / month
