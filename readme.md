@@ -18,7 +18,7 @@ curl
 
 1. create the user 
 
-    aws iam create-user --user-name dns-updater
+        aws iam create-user --user-name dns-updater
 
 2. Attach the `AmazonRoute53FullAccess` managed policy to the user
 
@@ -26,7 +26,7 @@ curl
        --policy-arn arn:aws:iam::aws:policy/AmazonRoute53FullAccess
 3. This policy grants full access to Route 53, Amazon's DNS service.
 
-    aws iam create-access-key --user-name dns-updater
+        aws iam create-access-key --user-name dns-updater
 
 This will output the `AccessKeyId` and `SecretAccessKey` for the user. this is needed to install these values in the main updateroute53.sh script ( line 6 and 7) 
 
@@ -34,7 +34,7 @@ This will output the `AccessKeyId` and `SecretAccessKey` for the user. this is n
 ## ZoneID
 To retive your HostedZoneID you and see this by running the following command line or obtain this in the GUI under hosted zone in route53 
 
-    aws route53 list-hosted-zones
+        aws route53 list-hosted-zones
 
 now add this value to line 5 in the updateroute53.sh script
 
@@ -46,8 +46,9 @@ This is the name of your A record you are looking to update in this update I am 
 ## Cron 
 you can run this as any user in this exmple I am running this at a user account rather than root 
 first make this executable 
-chmod 774 updateroute53.sh 
+        chmod 774 updateroute53.sh 
 
-crontab -e 
-*/5 * * * * /home/user/updateroute53.sh > /dev/null 2>&1
+        crontab -e 
+        
+        */5 * * * * /home/user/updateroute53.sh > /dev/null 2>&1
 
