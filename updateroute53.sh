@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Variables - set these
-hostname=www.example.com.
+hostname=example.com.
 zoneid=Z074XXXXXXXXXXXXXXX
 aws_access_key=AKIAXXXXXXXXXXXXXX
 aws_secret_key=8H6gXXXXXXXXXXXXXXXXXXXX
